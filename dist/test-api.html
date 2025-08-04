@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Test Netlify Functions</h1>
+    
+    <h2>Environment Test</h2>
+    <button onclick="testEnv()">Test Environment Variables</button>
+    <div id="env-result"></div>
+    
+    <h2>Chat Test</h2>
+    <button onclick="testChat()">Test Chat Function</button>
+    <div id="chat-result"></div>
+    
+    <script>
+        async function testEnv() {
+            try {
+                const response = await fetch('/.netlify/functions/test-env');
+                const data = await response.json();
+                document.getElementById('env-result').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('env-result').innerHTML = 'Error: ' + error.message;
+            }
+        }
+        
+        async function testChat() {
+            try {
+                const response = await fetch('/.netlify/functions/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Hello, this is a test message'
+                    })
+                });
+                
+                const data = await response.json();
+                document.getElementById('chat-result').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('chat-result').innerHTML = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
