@@ -6,7 +6,7 @@
   NODE_VERSION = "18"
 
 [functions]
-  directory = "netlify/functions"
+  directory = "quick-deploy-package"
 
 [[redirects]]
   from = "/api/*"
