@@ -1,0 +1,69 @@
+The Netlify deploy errored, with the following guidance provided:
+
+**Diagnosis:**
+The build failed with the error message indicating that Rollup failed to resolve the import "/src/main.tsx" from "index.html". This issue occurred during the build process with Vite.
+
+**Solution:**
+- Verify that the file "/src/main.tsx" exists in the repository and is committed to the repo.
+- Add the file "/src/main.tsx" to the `build.rollupOptions.external` configuration to explicitly externalize the module.
+
+By following these steps, you should be able to resolve the issue with Rollup failing to resolve the import during the build process.
+
+The relevant error logs are:
+
+Line 83: [96m[1m​[22m[39m
+Line 84: [96m[1mbuild.command from netlify.toml                               [22m[39m
+Line 85: [96m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 86: ​
+Line 87: [36m$ npm run build[39m
+Line 88: > rest-express@1.0.0 build
+Line 89: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+Line 90: [36mvite v5.4.20 [32mbuilding for production...[36m[39m
+Line 91: transforming...
+Line 92: [32m✓[39m 2 modules transformed.
+Line 93: [31mx[39m Build failed in 44ms
+Line 94: [31merror during build:
+Line 95: [31m[vite]: Rollup failed to resolve import "/src/main.tsx" from "/opt/build/repo/index.html".
+Line 96: This is most likely unintended because it can break your application at runtime.
+Line 97: If you do want to externalize this module explicitly add it to
+Line 98: `build.rollupOptions.external`[31m
+Line 99:     at viteWarn (file:///opt/build/repo/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65854:17)
+Line 100:     at onRollupWarning (file:///opt/build/repo/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65886:5)
+Line 101:     at onwarn (file:///opt/build/repo/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:65549:7)
+Line 102:     at file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:20950:13
+Line 103:     at Object.logger [as onLog] (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:22822:9)
+Line 104:     at ModuleLoader.handleInvalidResolvedId (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:21566:26)
+Line 105:     at file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:21524:26[39m
+Line 106: [91m[1m​[22m[39m
+Line 107: [91m[1m"build.command" failed                                        [22m[39m
+Line 108: [91m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 109: ​
+Line 110:   [31m[1mError message[22m[39m
+Line 111:   Command failed with exit code 1: npm run build
+Line 112: ​
+Line 113:   [31m[1mError location[22m[39m
+Line 114:   In build.command from netlify.toml:
+Line 115:   npm run build
+Line 116: ​
+Line 117:   [31m[1mResolved config[22m[39m
+Line 118:   build:
+Line 119:     base: /opt/build/repo
+Line 120:     command: npm run build
+Line 121:     commandOrigin: config
+Line 122:     environment:
+Line 123:       - NETLIFY_DATABASE_URL
+Line 124:       - NETLIFY_DATABASE_URL_UNPOOLED
+Line 125:       - OPENAI_API_KEY
+Line 126:       - NODE_VERSION
+Line 127:     publish: /opt/build/repo/dist
+Line 128:     publishOrigin: config
+Line 129:   functionsDirectory: /opt/build/repo/netlify/functions
+Line 130:   redirects:
+Line 131:     - from: /api/*
+      status: 200
+      to: /.netlify/functions/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+Line 132: Build failed due to a user error: Build script returned non-zero exit code: 2
+Line 133: Failing build: Failed to build site
