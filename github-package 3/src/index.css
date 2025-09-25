@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 10%);
+  --muted: hsl(0, 0%, 95%);
+  --muted-foreground: hsl(0, 0%, 45%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(0, 0%, 10%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(0, 0%, 10%);
+  --border: hsl(0, 0%, 90%);
+  --input: hsl(0, 0%, 90%);
+  --primary: hsl(0, 0%, 10%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --secondary: hsl(0, 0%, 85%);
+  --secondary-foreground: hsl(0, 0%, 10%);
+  --accent: hsl(0, 0%, 20%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 20%);
+  --radius: 0.5rem;
+  --neutral: hsl(0, 0%, 50%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 5%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 15%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --popover: hsl(0, 0%, 5%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 5%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 20%);
+  --primary: hsl(0, 0%, 98%);
+  --primary-foreground: hsl(0, 0%, 10%);
+  --secondary: hsl(0, 0%, 25%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(0, 0%, 80%);
+  --accent-foreground: hsl(0, 0%, 10%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 80%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: linear-gradient(135deg, hsl(0, 0%, 10%) 0%, hsl(0, 0%, 25%) 100%);
+  }
+  
+  .text-neutral {
+    color: hsl(0, 0%, 50%);
+  }
+  
+  .bg-neutral {
+    background-color: hsl(0, 0%, 50%);
+  }
+  
+  .text-primary {
+    color: hsl(0, 0%, 10%);
+  }
+  
+  .bg-primary {
+    background-color: hsl(0, 0%, 10%);
+  }
+  
+  .text-secondary {
+    color: hsl(0, 0%, 40%);
+  }
+  
+  .bg-secondary {
+    background-color: hsl(0, 0%, 85%);
+  }
+  
+  .text-accent {
+    color: hsl(0, 0%, 20%);
+  }
+  
+  .bg-accent {
+    background-color: hsl(0, 0%, 20%);
+  }
+  
+  .hover\:bg-primary-dark:hover {
+    background-color: hsl(0, 0%, 5%);
+  }
+  
+  .hover\:bg-accent-dark:hover {
+    background-color: hsl(0, 0%, 15%);
+  }
+  
+  .section-padding {
+    @apply py-16;
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4;
+  }
+}
